@@ -1,0 +1,72 @@
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
+# ctrl+B 运行python文件
+import os
+#print(os.listdir(r'D:\downloadPDF'))---打印出数组形式的文件夹下的文件列表
+root_dir = r"D:\downloadPDF"
+dest_dir = r"D:\\dest"
+fileContent = ""
+xxx="""This issue of the Earth Negotiations Bulletin ) 
+<enb@igc.apc.org> is written and edited by Johannah 
+Bernstein, Anilla Cherian <cherian@titan.ucs.umass.edu>, 
+Langston James Goree VI "Kimo" <kimo@iisd.org>, Desiree 
+McGraw and Steve Wise <swise@igc.apc.org>. General support 
+for the work of the Bulletin  has been provided by the 
+International Institute for Sustainable Development 
+<iisd@web.apc.org>, the Government of Denmark and the World 
+Bank. Specific funding for coverage of the CBD has been 
+provided by the Norwegian Directorate for Nature Management, 
+UNEP and WWF. The authors can be contacted at their 
+electronic mail addresses and during this meeting by phone 
+at +1 809 327 6000 room 193 and by fax at +1 809 327 6987. 
+IISD can be contacted by phone at +1-204-958-7700, by fax at 
++1-204-958-7710. The opinions expressed in Earth 
+Negotiations Bulletin  are those of the authors and do not 
+necessarily reflect the views of IISD and other funders. 
+Excerpts from the Earth Negotiations Bulletin  may be used 
+in other publications with appropriate citation. Electronic 
+versions of the Bulletin  can be found on the gopher at 
+<gopher.igc.apc.org> and in searchable hypertext through the 
+Linkages  WWW-server at <http://enb.iisd.org/> on 
+the Internet. This volume of the Bulletin  is uploaded into 
+the APC conferences <enb.library> and <biodiversity>.
+
+The Earth Negotiations Bulletin may not be reproduced, 
+reprinted or posted to any system or service outside of the APC 
+networks and the ENB listserver, without specific permission from
+the International Institute for Sustainable Development. This
+limitation includes distribution via Usenet News, bulletin board
+systems, mailing lists, print media and broadcast. For more
+information, send a message to <enb@igc.apc.org>.
+"""
+#print("zj",xxx)
+for everyFile in os.listdir(root_dir):
+	file_name = root_dir + "\\" + everyFile 
+	#print(file_name)
+	filein = open(file_name, "r")
+	#line = filein.readlines()
+	#print(filein)
+	line = "".join(filein.readlines())
+	#print("zj",line)
+	modifiedLine = line.replace(xxx," ")	
+	#print(modifiedLine)
+	#print(modifiedLine)
+	filein.close()
+	dest = dest_dir + "\\" + everyFile
+	print dest
+	fileOutput = file(dest,"w") #[0:-4]+"1"+".txt"
+	fileOutput.writelines(modifiedLine)
+	fileOutput.close()
+
+# import os
+# def getFileList(p):
+#         p = str(p)
+#         if p=="":
+#         	return [ ]
+#         p = p.replace( "/","\\")
+#         if p[ -1] != "\\":
+#         	p = p+"\\"
+#         a = os.listdir( p )
+#         b = [ x   for x in a if os.path.isfile( p + x ) ]
+#         return b
+# print getFileList("D:\\downloadPDF")
